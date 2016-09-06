@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 // Written by Dave Ghidiu
 
-// This program will ask a user for their age, and then
+// This program will ask a user for their name, and then
 // output their name with a salutation!
 
 
@@ -12,23 +12,22 @@ public class YourName {
 
 	public static void main(String[] args) {
 		
-		
-		String name = "Dave";
-		
-		System.out.println("Enter your age: ");
-		
-    // Take whatever the user types in and store it here!
+		// Declare the variables that will ultimately store the AGE and NAME
 		int age;
-		
+		String name; 
+
 		// Create a Scanner to read input
 		Scanner scanner = new Scanner(System.in);
+
+		// Ask the user for their name and assign their input to the variable 'name'
+		System.out.print("Enter your name: ");
+		name = scanner.nextLine();
 		
-		// Assign the "nextInt" to the variable 'age'
+		// Ask the user for their age and assign their input to the variable 'age'
+		System.out.print("Enter your age: ");
 		age = scanner.nextInt();
-		
 
 		System.out.println("Hello, " + name + "! You are " + age + " years old.");
-		
 
 	}
 

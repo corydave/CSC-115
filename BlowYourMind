@@ -9,6 +9,26 @@ public class BlowYourMind {
 
 	public static void main(String[] args) {
 
+		/*
+		int age = 38;
+		
+		System.out.println((double)age);
+		*/
+		
+//		System.out.print((double)(10/4));
+//		System.out.print(10/4.0);
+		
+		char capitalD = 'D';
+		char lowercaseD = 'd';
+		
+		System.out.println(capitalD + lowercaseD);
+		System.out.println("" + capitalD + lowercaseD);
+		System.out.println(lowercaseD + 0);
+		
+		
+		
+		
+		
 		// System.out.println(6 + 3 + " The sum of 6 and 3 is: " + (6 + 3));
 		// System.out.println(6 + 3 - 2 * 10 + " Order of operations " + (6 +
 		// 3));
@@ -26,7 +46,7 @@ public class BlowYourMind {
 				+ "dlkfjasld kfj" + " lines of text");
 */
 		
-		System.out.println("\\n\n\\t\t");
+//		System.out.println("\\n\n\\t\t");
 		
 //		 System.out.print("Hello World");
 		// System.out.println();

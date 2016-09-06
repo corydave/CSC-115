@@ -1,0 +1,48 @@
+package helloWorldFiles;
+
+import java.util.Scanner;
+
+// Written by Dave Ghidiu
+
+// This program will ask a user for their age, and then
+// output their name with a salutation!
+
+
+public class YourName {
+
+	public static void main(String[] args) {
+		
+		
+		String name = "Dave";
+		
+		System.out.println("Enter your age: ");
+		
+    // Take whatever the user types in and store it here!
+		int age;
+		
+		// Create a Scanner to read input
+		Scanner scanner = new Scanner(System.in);
+		
+		// Assign the "nextInt" to the variable 'age'
+		age = scanner.nextInt();
+		
+
+		System.out.println("Hello, " + name + "! You are " + age + " years old.");
+		
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

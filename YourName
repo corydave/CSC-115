@@ -28,6 +28,10 @@ public class YourName {
 		age = scanner.nextInt();
 
 		System.out.println("Hello, " + name + "! You are " + age + " years old.");
+		
+		// For our purposes, we don't need to close the Scanner, but this is how you would!
+		scanner.close();
+		
 
 	}
 

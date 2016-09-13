@@ -4,7 +4,7 @@ package square;
 
 import java.util.Scanner;
 
-public class Square {
+public class P01-Square {
 
 	public static void main(String[] args) {
 		// TODO 

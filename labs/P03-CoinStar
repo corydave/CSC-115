@@ -1,0 +1,6 @@
+import java.util.Scanner;
+
+public class CoinStar {
+  public static void main (String args[]) {
+  }
+}

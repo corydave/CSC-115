@@ -1,0 +1,679 @@
+/** TODO
+ * 
+ * Put images in DIV that is square, and resize image proportionately, and show just the center
+ * try/catch
+ * documentation
+ * warn users that they should ONLY download a PDF - otherwise people can have images of their signature
+ *
+ *
+ * COMMUNITY FOLDERS
+ *  - Graphs
+ *  - Maps
+ *  - Emoticons
+ *
+ *  https://developers.google.com/apps-script/add-ons/css
+ *  https://developers.google.com/apps-script/add-ons/style
+ *  https://developers.google.com/apps-script/add-ons/ 
+ *
+ */ 
+
+
+// GLOBAL VARIABLES 
+var THUMBNAIL_PREPEND = 'https://drive.google.com/thumbnail?authuser=0&sz=w100&id=';
+var VERSION = '0.5.0';
+var NAME_OF_SOFTWARE = 'ImageBar';
+ 
+
+
+
+
+/**
+ * @description TEST FUNCTION FOR DEVELOPMENT AND DEBUGGING
+ *
+ * @type function
+ */
+function test() {
+  
+  try {
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"test()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("test() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+
+}
+
+
+
+
+/**
+ * @description Installs the Add-on by creating a folder in the users drive, storing the folder ID into the Script Properties,
+ * changing the Script Property 'installed' to true, and run the tutorial
+ *
+ * @param {string} url: The URL of the image to be inserted
+ *
+ * @type function
+ */
+function onInstall(e) {
+  
+  try {
+  
+    onOpen();
+    
+  } catch (error) {
+
+//    Browser.msgBox("The function \"onInstall(e)\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("onInstall(e) terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }    
+   
+}
+
+
+
+
+function getRootFolderURLHTML() {
+
+  try {
+  
+    return '<a href="' + PropertiesService.getUserProperties().getProperty("rootFolderID") + '" target="_blank"><b>ImageBar</b></a>';
+    
+  } catch (error) {
+
+//    Browser.msgBox("The function \"getRootFolderURLHTML()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getRootFolderURLHTML() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+}
+
+
+
+
+function establishRootFolder() {
+
+  try {
+  
+    var html = HtmlService.createTemplateFromFile('Setup.html').evaluate()
+        .setWidth(600)
+        .setHeight(425)
+        .setTitle('Setup ImageBar')
+        .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+    DocumentApp.getUi().showModalDialog(html, 'Configure ImageBar');
+  
+  
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"establishRootFolder()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("establishRootFolder() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+
+}
+
+
+
+
+// Create a folder in the user's root Google Drive directory with the name of the software
+function createRootFolder() {
+  
+  try {
+  
+    var storageFolderID = DriveApp.createFolder(NAME_OF_SOFTWARE).getId();
+    PropertiesService.getUserProperties().setProperty('rootFolderID', storageFolderID);
+    
+    setProperties();
+    onOpen();
+
+
+
+  } catch (error) {
+
+//    Browser.msgBox("The function \"createRootFolder()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("createhRootFolder() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+}
+
+
+
+function setProperties() {
+
+//    PropertiesService.getUserProperties().setProperty('installed', true);
+    PropertiesService.getUserProperties().setProperty('currentFolderID', storageFolderID);
+    PropertiesService.getUserProperties().setProperty('configured', true);
+
+}
+
+function chooseExistingFolder(folderID) {
+
+  try {
+  
+    PropertiesService.getUserProperties().setProperty('rootFolderID', folderID);
+    setProperties();
+    onOpen();
+    
+  } catch (error) {
+
+//    Browser.msgBox("The function \"chooseExistingFolder(" + folderID + ")\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("establishRootFolder(" + folderID + ") terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+}
+
+
+
+
+/**
+ * @description Runs the tutorial (which is really a modal dialogue with an HTML page)
+ *
+ * @type function
+ */
+function runTutorial() {
+
+  try {
+  
+    var html = HtmlService.createHtmlOutputFromFile('Tutorial.html')
+        .setWidth(600)
+        .setHeight(425)
+        .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+    DocumentApp.getUi().showModalDialog(html, 'Learn about ImageBar');
+
+  } catch (error) {
+
+//    Browser.msgBox("The function \"runTutorial()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("runTutorial() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+
+}
+
+
+
+
+// ACCESSORS ------------------------------------------------------------------------------------------
+
+function getRootFolderID() {
+  
+  try {
+  
+    return PropertiesService.getUserProperties().getProperty('rootFolderID');
+
+  } catch (error) {
+
+//    Browser.msgBox("The function \"getRootFolderID()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getRootFolderID() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+
+}
+
+
+
+
+function getVersion() {
+  
+  try {
+  
+    return VERSION;
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"getVersion()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getVersion() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+}
+
+
+
+// Called from HTML - probably will need to change the action of this.
+function getRoot() {
+
+  try {
+  
+    return getThumbnails(PropertiesService.getUserProperties().getProperty('rootFolderID'));
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"getRoot()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getRoot() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+}
+
+function configured() {
+
+  return PropertiesService.getUserProperties().getProperty('configured');
+
+}
+
+
+// ----------------------------------------------------------------------------------------------------
+
+
+function unconfigure() {
+  
+  PropertiesService.getUserProperties().setProperty('configured', false);
+  DocumentApp.getActiveDocument().getCursor().insertText('\n  CONFIGURED IS NOW: ' + PropertiesService.getUserProperties().getProperty('configured'));
+  
+}
+
+
+
+/**
+ * @description Generates the Add-on Menu
+ *
+ * @type function
+ */
+function onOpen() {
+
+  try {
+  
+    DocumentApp.getUi().createAddonMenu()
+      .addItem('Launch ImageBar', 'showImageSidebar')
+      .addItem('UNCONFIGURE', 'unconfigure')
+      .addSubMenu(DocumentApp.getUi().createMenu('Settings')
+        .addItem('Configure', 'settings')
+        .addItem('How to use ImageBar', 'runTutorial')
+//        .addItem('Add folder from community', 'addSharedFolderFromCommunity')
+//        .addItem('Add folder by URL', 'addSharedFolderFromURL')
+        )
+        .addItem('About', 'about')
+      .addToUi();
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"onOpen()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("onOpen() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+}
+
+function settings() {
+  establishRootFolder();
+  PropertiesService.getUserProperties().setProperty('configured', 'true');
+  onOpen();
+}
+
+
+/**
+ * @description Displays an HTML-service dialog in Google Sheets that contains client-side JavaScript code for the Google Picker API.
+ *
+ * @type function
+ */
+function about() {
+
+  try {
+    
+    var ui = DocumentApp.getUi();
+    var html = HtmlService.createTemplateFromFile('about').evaluate().setHeight(500).setWidth(600);
+    DocumentApp.getUi().showModalDialog(html, 'About ImageBar');
+ 
+  } catch (error) {
+
+//    Browser.msgBox("The function \"about()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("about() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+
+} 
+
+
+
+
+/**
+ * @description Gets the user's OAuth 2.0 access token so that it can be passed to Picker.
+ * This technique keeps Picker from needing to show its own authorization
+ * dialog, but is only possible if the OAuth scope that Picker needs is
+ * available in Apps Script. In this case, the function includes an unused call
+ * to a DriveApp method to ensure that Apps Script requests access to all files
+ * in the user's Drive.
+ *
+ * @return {string} The user's OAuth 2.0 access token.
+ */
+function getOAuthToken() {
+  DriveApp.getRootFolder();
+  return ScriptApp.getOAuthToken();
+}
+
+
+
+
+/**
+ * @description Inserts the selected image into the Document
+ *
+ * @param {string} url: The URL of the image to be inserted
+ *
+ * @type function
+ */
+function insertImageByURL(url) {
+
+  try {
+  
+    var widthToBe = 200;
+    var image = DriveApp.getFileById(URLtoID(url));
+    var imagePlaced = DocumentApp.getActiveDocument().getCursor().insertInlineImage(image);
+    var width = imagePlaced.getWidth();
+    var height = imagePlaced.getHeight();
+    var ratio = width/height;
+    imagePlaced.setWidth(widthToBe);
+    imagePlaced.setHeight(widthToBe/ratio);
+  
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"insertImageByURL()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("insertImageByURL() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+  
+  }  
+
+}
+
+
+
+
+/**
+ * @description Given a URL, this method returns the Google Drive ID of the file
+ * Pretty much taken directly from http://stackoverflow.com/questions/16840038/easiest-way-to-get-file-id-from-url-on-google-apps-script
+ * @param {string} URL: The URL of the image to be inserted
+ *
+ * @return {string} The ID of the file in Google Drive
+ *
+ * @type function
+ */
+function URLtoID(url) {
+
+  try {
+
+    return url.match(/[-\w]{25,}/);
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"URLtoID(" + url + ")\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("URLtoID(" + url + ") terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+  
+}
+
+
+
+
+function getFoldersAndFiles() {
+  
+  try {
+    
+    var folderID = PropertiesService.getUserProperties().getProperty('rootFolderID');
+    return (getThumbnails(folderID));
+  
+  } catch (error) {
+
+    Browser.msgBox("The function \"getFoldersAndFiles()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getFoldersAndFiles() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+  
+}
+
+
+
+
+function getThumbnails(folderID) {
+/* TODO
+ *
+ * Gather all PNG, JPG, JPEG, GIF, whatever else Drive supports
+ * If height is more than XXXXXX, truncate or resize?
+ *
+ */ 
+
+  try {
+  
+    var folder = DriveApp.getFolderById(folderID);
+    var imagesString = '';
+    var imagesHTMLPre = '<img class="thumb" src="';
+    var imagesHTMLPost = '" alt="HI" />';
+  
+    imagesString = getFolderList(folderID) + '';
+    
+    var gifs = folder.getFilesByType('image/gif');  
+    while (gifs.hasNext()) {
+      var gif = gifs.next();
+      var thumbnailString = convertIDToThumbnail(gif.getId());
+      imagesString += imagesHTMLPre + thumbnailString + imagesHTMLPost;
+    }
+  
+    var jpgs = folder.getFilesByType('image/jpeg');  
+    while (jpgs.hasNext()) {
+      var jpg = jpgs.next();
+      var thumbnailString = convertIDToThumbnail(jpg.getId());
+      imagesString += imagesHTMLPre + thumbnailString + imagesHTMLPost;
+    }
+    
+    var pngs = folder.getFilesByType('image/png');  
+    while (pngs.hasNext()) {
+      var png = pngs.next();
+      var thumbnailString = convertIDToThumbnail(png.getId());
+      imagesString += imagesHTMLPre + thumbnailString + imagesHTMLPost;
+    }
+  
+    return imagesString;
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"getThumbnails(" + folderID + ")\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getThumbnails(" + folderID + ") terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+  
+  }
+  
+}
+
+
+
+
+function convertIDToThumbnail(png) {
+  
+  try {
+    
+    return THUMBNAIL_PREPEND + png;
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"convertIDToThumbnail(" + png + ")\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("convertIDToThumbnail(" + png + ") terminated unexpectedly:   " + error + " - Line " + error.lineNumber);
+    
+  }
+  
+}
+
+
+
+
+function getFolderList(folderID) {
+
+  try {
+    
+    var folderList = '<div class="folderList">';  
+    var folders = DriveApp.getFolderById(folderID).getFolders();
+    var subFolderName;
+    var subFolderID;
+    
+    while (folders.hasNext()) {
+    
+      var subFolder = folders.next();
+      subFolderName = subFolder.getName();
+      subFolderID = subFolder.getId();
+      
+      folderList += '<div onclick="clicked(this)" class="folder" id="' + subFolderID + '"><i class="fa fa-folder" aria-hidden="true"></i> ' + subFolderName + '</div>';
+      
+    }
+    
+    folderList += '</div>';
+    
+    return folderList;
+  
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"getFolderList()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("getFolderList() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+  
+  }
+  
+}
+
+
+
+
+function showImageSidebar() {
+  
+  try {
+  
+    DocumentApp.getActiveDocument().getCursor().insertText('CONFIGURED: ' + PropertiesService.getUserProperties().getProperty('configured'));
+    DocumentApp.getActiveDocument().getCursor().insertText(' configured() != true : ' + (configured() != true));
+  
+    if (!configured().equals('true')) {
+      
+      settings();
+    
+    } else {
+  
+      var ui = HtmlService.createTemplateFromFile('Images').evaluate()
+                .setTitle('ImageBar')
+                .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+      
+      DocumentApp.getUi().showSidebar(ui);
+    
+    }
+    
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"showImageSidebar()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("showImageSidebar() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+  
+  }
+  
+}
+
+
+
+/**
+ * @description Helper code for HTML templates to include files such as Stylesheet and JavaScript
+ *
+ * @type function
+ *
+ * @param filename - The HTML file being passed in that needs to be included
+ *
+ * @return Returns content from the HTMLOutput
+ */
+function include(filename) {
+
+  try {
+    
+    return HtmlService.createHtmlOutputFromFile(filename)
+        .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+        .getContent();
+  
+  } catch (error) {
+
+//    Browser.msgBox("The function \"include()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("include() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+}
+
+
+
+
+
+function addSharedFolderFromCommunity() {
+// A modal will pop up and ask the user if they have an ID/URL of a Google Drive folder to enter, or if they
+// want to choose from the approved list (in Dave's Drive!). 
+// Maps
+// Computer stuff from Unsplash
+// Graph paper
+//
+// Note that checks need to be made to ensure that the folder URL/ID entered is legitimate
+
+  try {
+  
+  
+  
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"addSharedFromCommunity()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("addSharedFromCommunity() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+  
+}
+
+
+
+function addSharedFolderFromURL() {
+  
+  try {
+  
+    var html = HtmlService.createTemplateFromFile('AddFolderByURL.html').evaluate()
+        .setWidth(600)
+        .setHeight(425)
+        .setTitle('Add a folder by URL or ID')
+        .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+    DocumentApp.getUi().showModalDialog(html, 'Add a folder by URL or ID');
+  
+  
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"addSharedFolderFromURL()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("addSharedFolderFromURL() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+
+  }
+
+}
+
+
+function addSharedFolderFromURLHandler(input) {
+
+  try {
+    
+    if (input.length != 28) {
+    
+      input = URLtoID(input);
+    
+    }
+      
+    try {
+    
+      DriveApp.getFolderById(PropertiesService.getUserProperties().getProperty('rootFolderID')).addFolder(DriveApp.getFolderById(input));
+    
+    } catch (error) {
+            
+      Logger.log("Attempted to add folder: " + input + " but there was an issue.\n" + error);
+    
+    }
+    
+  } catch (error) {
+  
+//    Browser.msgBox("The function \"addSharedFromURL()\" did not run. Please contact technical support.\\n\\n" + error.lineNumber + " " + error);
+    Logger.log("addSharedFromURL() terminated unexpectedly:   " + error + " - Line " + error.lineNumber);      
+    
+  }
+  
+}
+
+
+
+/*
+The MIT License (MIT)
+Copyright (c) 2016 Dave Ghidiu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+*/

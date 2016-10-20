@@ -46,14 +46,4 @@ public class Square {
 		// We don't need to, but it's nice to
 		scanner.close();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

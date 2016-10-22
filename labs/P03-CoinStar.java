@@ -24,7 +24,8 @@ public class CoinStar {
 		
 		System.out.print("How many pennies did you insert? ");
 		int pennies = scanner.nextInt();
-//		int pennies = 1013;
+		// Define pennies to be 1013 to aid in debugging
+		// int pennies = 1013;
 		
 		int dollars = pennies / 100;
 		int cents = pennies % 100;

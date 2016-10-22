@@ -2,6 +2,8 @@ package coinStar;
 
 import java.util.Scanner;
 
+// Dave Ghidiu
+
 public class CoinStar {
 
 	public static void main(String[] args) {

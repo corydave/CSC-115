@@ -133,12 +133,12 @@ public class StringLab {
 					+ phrase.toUpperCase());
 			break;
 		default:
-			System.out.println("INVALID CHOICE!");
+			System.out.println("You chose... poorly...!");
 			break;
 		}
-
+		
 		scanner.close();
-
+		
 	}
 
 }

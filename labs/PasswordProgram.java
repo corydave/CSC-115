@@ -18,7 +18,7 @@ public class PasswordProgram {
 			showPasswordSpecifications();
 			break;
 		case 2:
-			generateRandomPassword();
+			System.out.print(generateRandomPassword());
 			break;
 		case 3:
 			System.out.print("Enter a password to test: ");
@@ -51,7 +51,7 @@ public class PasswordProgram {
 		return -1; // This return statement will need to be changed
 	}
 
-	static void generateRandomPassword() {
+	static String generateRandomPassword() {
 		// PRE-CONDITIONS: None
 		// POST-CONDITIONS: A password that satisfies the specifications is
 		// generated
@@ -63,6 +63,8 @@ public class PasswordProgram {
 		// 1. There are at least eight characters in the password
 		// 2. There are at least two digits (0-9) in the password
 		// 3. At least one of the characters is capitalized
+		
+		return "DEBUGGING: generateRandomPassword"; // This will need to be changed
 	}
 
 	static void showPasswordSpecifications() {

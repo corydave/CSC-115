@@ -23,6 +23,7 @@ public class PasswordProgram {
 			break;
 		case 3:
 			System.out.print("Enter a password to test: ");
+			scanner.nextLine();
 			String input = scanner.nextLine();
 			if (verifyPasswordSpecifications(input) == true) {
 				System.out.println("Your password is valid.");

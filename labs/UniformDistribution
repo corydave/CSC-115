@@ -3,7 +3,7 @@ package uniformDistribution;
 import java.util.Random;
 import java.util.Scanner;
 
-public class UniformDistributionSkeleton {
+public class UniformDistribution {
 	public static void main(String args[]) {
 
 		// Declare an array of length 10

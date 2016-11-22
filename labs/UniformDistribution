@@ -75,7 +75,7 @@ public class UniformDistribution {
 	 * 
 	 * 1. The index number of the element with a colon and a space after it, and
 	 * 
-	 * 2. The contents of the element (for instance, "-------"
+	 * 2. The contents of the element (for instance, "-------")
 	 */
 	static void displayMetrics(String[] numberContainer) {
 		

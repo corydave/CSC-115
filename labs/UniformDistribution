@@ -3,7 +3,7 @@ package uniformDistribution;
 import java.util.Random;
 import java.util.Scanner;
 
-public class UniformDistribution {
+public class UniformDistributionSkeleton {
 	public static void main(String args[]) {
 
 		// Declare an array of length 10
@@ -18,14 +18,11 @@ public class UniformDistribution {
 		// int numberOfValues = 100;
 
 		// Populate the array with an empty String in each index
-		for (int i = 0; i < numberContainer.length; i++) {
-			numberContainer[i] = "";
-		}
+		initializeArray(numberContainer);
 
 		// This will load the array 'numberContainer' with 'numberOfValues'
-		// worth
-		// of data (so if 'numberOfValues' is 100, then 100 numbers are randomly
-		// generated and put into the array in the appropriate cell
+		// worth of data (so if 'numberOfValues' is 100, then 100 numbers
+		// are randomly generated and put into the array in the appropriate cell
 		loadArrayWithValues(numberContainer, numberOfValues);
 
 		// This will output the values of 'numberContainer' into an appropriate
@@ -33,7 +30,20 @@ public class UniformDistribution {
 		displayMetrics(numberContainer);
 
 	}
-
+	
+	/*
+	 * This method takes in the array of String variables, 'numberContainer', and walks
+	 * through each element, setting every value to the empty String (that is, "")
+	 * 
+	 */
+	static void initializeArray(String[] numberContainer) {
+		
+		System.out.println("initializeArray() has been called");
+		// This code exists only for debugging - it should be deleted or
+		// commented out
+	}
+	
+	
 	/*
 	 * This method will take in two parameters - an array of Strings
 	 * ('numberContainer') and an int ('numberOfValues'). When invoked, this
@@ -53,7 +63,9 @@ public class UniformDistribution {
 	 */
 	static void loadArrayWithValues(String[] numberContainer, int numberOfValues) {
 
-		System.out.println("\nloadArrayWithValues\nCHANGE THIS CODE!");
+		System.out.println("loadArrayWithValues() has been called");
+		// This code exists only for debugging - it should be deleted or
+		// commented out
 		
 	}
 
@@ -67,7 +79,9 @@ public class UniformDistribution {
 	 */
 	static void displayMetrics(String[] numberContainer) {
 		
-		System.out.println("\ndisplayMetrics\nCHANGE THIS CODE!");
+		System.out.println("displayMetrics() has been called");
+		// This code exists only for debugging - it should be deleted or
+		// commented out
 		
 	}
 

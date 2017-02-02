@@ -3,7 +3,7 @@ package examples;
 // Dave Ghidiu
 // Code for class examples
 
-public class TimesTable {
+public class PowerTable {
 
 	public static void main(String[] args) {
 		

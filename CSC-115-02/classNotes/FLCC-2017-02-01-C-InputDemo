@@ -11,8 +11,9 @@ public class InputDemo {
 		// xPrompt the user for their name and store it in the variable
 		// xGreet the user by their name (echo)
 		// xPrompt the user for a number
-		// Output the first 5 products (1-5)
-		// Display "Game Over"
+		// xStore the value the user inputs in the variable
+		// xOutput the first 5 products (1-5)
+		// xDisplay "Game Over"
 		
 		// Create a Scanner named 'jackBauer' and capture
 		// input from the System.in stream
@@ -39,9 +40,20 @@ public class InputDemo {
 		// Grab the number they have typed in and store it in 'num'
 		num = jackBauer.nextInt();
 		
+		// Output the first five products of 'num'
+		System.out.println(num*1 + "\t" + num*2 + "\t" + num*3 + "\t" + num*4 + "\t" + num*5);
+		num++;
+		System.out.println(num*1 + "\t" + num*2 + "\t" + num*3 + "\t" + num*4 + "\t" + num*5);
+		num++;
+		System.out.println(num*1 + "\t" + num*2 + "\t" + num*3 + "\t" + num*4 + "\t" + num*5);
+		num++;
+		System.out.println(num*1 + "\t" + num*2 + "\t" + num*3 + "\t" + num*4 + "\t" + num*5);
+		num++;
+		System.out.println(num*1 + "\t" + num*2 + "\t" + num*3 + "\t" + num*4 + "\t" + num*5);
+
+		System.out.println("Game over!");
 		
-		
-		
+		jackBauer.close();
 		
 	}
 

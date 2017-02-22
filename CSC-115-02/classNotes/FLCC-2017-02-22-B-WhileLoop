@@ -1,0 +1,24 @@
+package examples;
+import java.util.Scanner;
+
+public class WhileLoop {
+
+	public static void main(String[] args) {
+
+		Scanner kazoo = new Scanner(System.in);
+		System.out.print("Enter a number: ");
+		double num = kazoo.nextDouble();
+		
+		while (num >= -120) {
+			System.out.println(num);
+			num *= Math.PI;
+		}
+		
+		System.out.println("Game Over");
+//		#KAZOO
+		
+		
+		
+	}
+
+}

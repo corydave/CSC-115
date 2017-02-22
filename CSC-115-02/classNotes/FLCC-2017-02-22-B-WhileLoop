@@ -7,11 +7,11 @@ public class WhileLoop {
 
 		Scanner kazoo = new Scanner(System.in);
 		System.out.print("Enter a number: ");
-		double num = kazoo.nextDouble();
+		int num = kazoo.nextInt();
 		
-		while (num >= -120) {
+		while (num >= 0) {
 			System.out.println(num);
-			num *= Math.PI;
+			num--
 		}
 		
 		System.out.println("Game Over");

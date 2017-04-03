@@ -1,0 +1,49 @@
+package examples;
+import java.util.Scanner;
+
+public class ForLoopsPractice {
+
+	public static void main(String[] args) {
+
+		/*
+		 * 1. Write a for loop that counts from 1 to 100 by 2s.
+		 * 
+		 * 2. Ask the user for a number to start at. Ask the
+		 * user for a number to end at. Count from their starting
+		 * number up to - and including - their ending number.
+		 * 
+		 * 3. Ask the user for a big number. Ask the user for a
+		 * small number. Count down from the big one to the small one
+		 * but count by 3s.
+		 * 
+		 */
+		
+		for (int i = 1; i <= 100; i++) {
+			System.out.println(i);
+		}
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Enter a starting number: ");
+		int startNum = scanner.nextInt();
+		
+		System.out.print("Enter an ending number: ");
+		int endNum = scanner.nextInt();
+		
+		for (int i = startNum; i <= endNum; i++) {
+			System.out.println(i);
+		}
+		
+		System.out.print("Enter a big number: ");
+		int bigNum = scanner.nextInt();
+		
+		System.out.print("Enter a smaller number: ");
+		int smallNum = scanner.nextInt();
+
+		for (int i = bigNum; i >= smallNum; i-=3) {
+			System.out.println(i);
+		}
+		
+	}
+
+}

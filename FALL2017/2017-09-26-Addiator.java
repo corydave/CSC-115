@@ -1,32 +1,54 @@
+// Import a Scanner
 import java.util.Scanner;
 
-public class Addiator{
-
-     public static void main(String []args){
+public class Addiator {
+    
+    public static void main (String args[]) {
         
-        // Create a new scanner
+        // Create a Scanner
         Scanner scanner = new Scanner(System.in);
         
-        // Prompt user for first number
+        
+        
+        // Declare a variable
+        double firstPizza; // Just Dan Wangin'
+        
+        // Prompt the user
         System.out.print("Enter first number: ");
         
-        // Store first number in 'first'
-        double first = scanner.nextDouble();
+        // Store what the user types into 'firstPizza'
+        firstPizza = scanner.nextDouble();
         
-        // Go to the next Line
-        System.out.println();
+        
+        
         
         // Prompt user for second number
         System.out.print("Enter second number: ");
         
-        // Store second number in 'second'
-        double second = scanner.nextDouble();
+        // Declare a second variable
+        double secondGoldfish; // DanWangin' again :(
         
-        // Go to the next Line
-        System.out.println();
+        // Store what the user types into 'secondGoldfish'
+        secondGoldfish = scanner.nextDouble();
         
-        // Output the sum
-        System.out.println(first + second);
+
         
-     }
+        System.out.println(firstPizza + secondGoldfish);        
+
+        
+        
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+

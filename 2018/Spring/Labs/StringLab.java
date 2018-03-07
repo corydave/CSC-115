@@ -43,17 +43,20 @@ public class StringLab {
             String newPhrase = scanner.nextLine();
     
             if (phrase.compareTo(newPhrase) < 0) {
-                System.out.println("Alphabetically, \"" + phrase + "\" comes before \"" + newPhrase + "\"");
+                System.out.println("\nAlphabetically, \"" + phrase + "\" comes before \"" + newPhrase + "\"");
             } else if (phrase.compareTo(newPhrase) > 0) {
-                System.out.println("Alphabetically, \"" + phrase + "\" comes after \"" + newPhrase + "\"");
+                System.out.println("\nAlphabetically, \"" + phrase + "\" comes after \"" + newPhrase + "\"");
             } else {
-                System.out.println("The two phrases are equivalent.");
+                System.out.println("\tThe two phrases are equivalent.");
             }    
             
         } else if (choice == 4) {
 
             System.out.println("Enter a phrase that will be compared with \"" + phrase + "\": ");
+            
+            scanner.nextLine();
             String newPhrase = scanner.nextLine();
+            System.out.println();
             
             if (phrase.equals(newPhrase)) {
                 System.out.println("The two phrases DO have the same sequence of characters.");
@@ -64,7 +67,10 @@ public class StringLab {
         } else if (choice == 5) {
 
             System.out.println("Enter a String to search \"" + phrase + "\" for: ");
+            
+            scanner.nextLine();
             String newPhrase = scanner.nextLine();
+            System.out.println();
             
             int pos = phrase.indexOf(newPhrase);
             
@@ -87,13 +93,13 @@ public class StringLab {
             if (tempChoice == 1) {
                 System.out.println("Which index (between 0 and " + (phrase.length() - 1) + ") would you like to start with? ");
                 int pos = scanner.nextInt();
-                System.out.println("The new phrase is: \"" + phrase.substring(pos) + "\"");
+                System.out.println("\nThe new phrase is: \"" + phrase.substring(pos) + "\"");
             } else {
                 System.out.println("Which index (between 0 and " + (phrase.length() - 1) + ") would you like to start with? ");
                 int startPos = scanner.nextInt();
                 System.out.println("Which index (between " + startPos + " and " + (phrase.length() - 1) + ") would you like to end with? ");
                 int endPos = scanner.nextInt();
-                System.out.println("The new phrase is \"" + phrase.substring(startPos, endPos) + "\"");
+                System.out.println("\nThe new phrase is \"" + phrase.substring(startPos, endPos) + "\"");
             }            
             
         } else if (choice == 7) {

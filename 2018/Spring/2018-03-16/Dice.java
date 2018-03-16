@@ -60,16 +60,6 @@ public class Dice {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     // Method that takes a parameter and returns a value
     public static int rollSpecial(int sides) {
 
@@ -99,41 +89,4 @@ public class Dice {
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

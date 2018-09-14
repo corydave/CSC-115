@@ -1,5 +1,5 @@
 // <Insert your name here>
-// CSC-103
+// CSC-115
 // This program is designed to blow yer mind.
 
 public class BlowYerMind {

@@ -8,8 +8,8 @@ public class StringDemo {
         System.out.println("name = " + name); // Dennis
         
         // charAt will return the character in the specified INDEX
-        System.out.println(name.charAt(2)); // ??????? e?
-        System.out.println(name.charAt(0)); // ??????? D?
+        System.out.println(name.charAt(2)); //  e
+        System.out.println(name.charAt(0)); //  <space> or " "
         
         System.out.println();
         
@@ -22,26 +22,24 @@ public class StringDemo {
         System.out.println();
         
         // length() returns the actual length of the String
-        System.out.println(name.length()); // ???? 5? 6?
+        System.out.println(name.length()); // 7
         
         System.out.println();
         
         // substring(inclusive, exclusive) will start and end at the two positions
-        System.out.println(name.substring(1, 3)); // ???? en
+        System.out.println(name.substring(1, 3)); // De
     
         // substring(justOneNumber) will start at the number and go to the end
-        System.out.println(name.substring(2)); // nnis
-        
-        // A Boy and his Blob
-        // http://static.tvtropes.org/pmwiki/pub/images/303000477_a0bc77ef7d.jpg
+        System.out.println(name.substring(2)); // ennis
         
         // trim() will ... eradicate leading and trailing whitespace
-        System.out.println(name.trim());
+        System.out.println(name.trim()); // "Dennis"
         
         System.out.println();
         
         // reassign the value of 'name' with the = operator (ASSIGN)
-        name = name.toUpperCase();
+        // name = name.trim();
+        name = name.toUpperCase().trim();
         
         System.out.println(name);
         
@@ -60,9 +58,12 @@ public class StringDemo {
         System.out.println();
         
         String name2 = "Dennis ";
-        System.out.println(name.equals(name2));
-        System.out.println(name.equalsIgnoreCase(name2));
-        System.out.println(name.trim().equalsIgnoreCase(name2.trim()));
+        System.out.println(name.equals(name2)); // false
+        System.out.println("Dave".equals(name2)); // false
+        
+        // name = "DENNIS"
+        System.out.println(name.equalsIgnoreCase(name2)); // false
+        System.out.println(name.trim().equalsIgnoreCase(name2.trim())); // true!!!!!
         
         
         

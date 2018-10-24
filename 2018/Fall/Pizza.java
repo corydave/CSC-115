@@ -142,38 +142,23 @@ public class Pizza {
 
         System.out.println("");
         System.out.println("Thank you! Please wait while I determine the best pizza value.");
+        System.out.println();
+
+        System.out.println("The first pizza deal has a PPIP of $" + ppipDealOne);
+        System.out.println("The second pizza deal has a PPIP of $" + ppipDealTwo);        
 
         
         
         if (ppipDealOne > ppipDealTwo) {
-            
+            System.out.println("The better deal is the second pizza deal.");
+        } else if (ppipDealTwo > ppipDealOne) {
+            System.out.println("The better deal is the first pizza deal.");
+        } else { // if (ppipDealOne == ppipDealTwo)
+            System.out.println("They are equal.");
         }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
         
         
         

@@ -1,0 +1,130 @@
+public class MathDemo {
+    public static void main (String[] args) {
+        
+        System.out.println(1.0*5/2 + 5/2); // 4.5
+        
+        // MOD
+        // Modulus
+        System.out.println(5 % 3); // 2
+        // Mod means REMAINDER
+        // Page 77 in the textbook
+        
+        if (6 % 2 == 0) {
+            System.out.println("Even Number");
+        } else {
+            System.out.println("Odd Number");
+        }
+        
+        
+        
+        /*
+        int short long byte
+        double float
+        char
+        boolean
+        */
+        
+        
+        // Good variable names
+        int age;
+        String name;
+        
+        // Bad variable names because they don't
+        // describe what they do
+        int dumb;
+        int imtoolazy;
+        int somethingDescriptive;
+        
+        // Bad because they are legal, but a
+        // bad idea
+        int NUMBEROFKM; // all caps!
+        int NumberOfKM; // starts with a capital
+        int $numOfKM;   // don't use special characters
+        int numberofkm; // don't use camelCase
+        
+        int numberOfKM; // YEAH!!!!!!
+        
+        
+        // CONSTANTS
+        int studentsInClass = 16;   // bad name and form
+        int STUDENTS_IN_CLASS = 16; // better, but not perfect
+        
+        // The PERFECT way to make a constant
+        final int STUDENTS_IN_CLASS = 16;
+        
+        // STUDENTS_IN_CLASS = 18; // REJECTED!!!!!!!
+        
+        
+        
+        
+        
+        // CASTING
+        
+        (double)5/2;
+        System.out.println((double)5/2);
+        
+        double pay = 500.92;
+        
+        System.out.println(int(pay)); // 500 or 501
+        // Truncating
+        // (int) 99.9999999999999999999; // 99
+        
+        
+        
+        
+        // INCREMENT and DECREMENT
+        
+        /*
+        int age = ????;
+        age = ???? + 1;
+        */
+        
+        int davesAge = 40;
+        System.out.println("Dave is " + davesAge); // 40
+        
+        davesAge = davesAge + 1;
+        System.out.println("Dave is " + davesAge); // 41
+        
+        davesAge += 10;
+        System.out.println("Dave is " + davesAge); // 51
+        
+        davesAge++;
+        System.out.println("Dave is " + davesAge); // 52
+        
+        davesAge--;
+        System.out.println("Dave is " + davesAge); // 51
+        
+        davesAge -= 11;
+        System.out.println("Dave is " + davesAge); // 40
+        
+        davesAge *= 20;
+        System.out.println("Dave is " + davesAge); // 800
+        // #YODA
+        
+        
+        
+        
+        
+        
+     
+     
+     
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

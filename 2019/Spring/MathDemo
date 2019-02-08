@@ -99,6 +99,8 @@ public class MathDemo {
         
         davesAge *= 20;
         System.out.println("Dave is " + davesAge); // 800
+        
+        davesAge += 100;
         // #YODA
         
         

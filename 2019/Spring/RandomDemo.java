@@ -1,10 +1,16 @@
+import java.util.Scanner;
 import java.util.Random;
 
 public class RandomDemo {
     public static void main (String[] args) {
         
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a seed:");
+        int seed = scanner.nextInt();
+        
         // "Seeding" the random number generator
-        Random random = new Random(33);
+        Random random = new Random(seed);
         
         System.out.println("GENERATE A CAPITAL LETTER:");
         
